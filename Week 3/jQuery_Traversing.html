@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> jQuery Traversing </title>
+    <style>
+        .highlight {
+            background-color: blue;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var filteredItems = $('li').filter(function() { // function filters through all 'li' elements
+                return $(this).text().includes('2'); // finds the 'li' element with '2' in its text (Item 2)
+            });
+
+            filteredItems.addClass('highlight'); // adds the class 'highlight' and its CSS to the filtered 'li' element
+        });
+
+    </script>
+</head>
+<body>
+    <h1> Traversing Example </h1>
+
+    <ul>
+        <li> Item 1 </li>
+        <li> Item 2 </li>
+        <li> Item 3 </li>
+    </ul>
+</body>
+</html>

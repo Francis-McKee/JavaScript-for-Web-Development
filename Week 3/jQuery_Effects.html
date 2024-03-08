@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> jQuery Effects </title>
+
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            display: none;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1> Effects Example </h1>
+
+    <button> Toggle Box </button>
+    <div id="myBox" class="box"></div>
+
+    <script>
+        $(document).ready(function() { // executes when the document (HTML page) has finished loading
+
+            $('button').click(function() { // executes when button element is clicked
+                $('#myBox').fadeToggle(); // Toggles fade in/out 
+            });
+        });
+
+    </script>
+</body>
+</html>

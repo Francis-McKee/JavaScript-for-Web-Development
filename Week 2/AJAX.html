@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Document </title>
+
+</head>
+<body>
+    
+    <h1> Users </h1>
+    <ul id="userList"></ul>
+
+    <script> // we use AJAX to load content dynamically without requiring a full page refresh
+
+        const userList = document.querySelector('#userList');
+        const xhr = new XMLHttpRequest(); // create new request
+
+        xhr.onreadystatechange = function() { // callback function to handle response when it is recieved from server 
+            if ( xhr.readyState === XMLHttpRequest.DONE) {
+                if ( xhr.status === 200 ) { // check status of the response to ensure success -- 200 means it ran successfully
+                    const userData = JSON.parse(xhr.responseText); // parse it into a JavaScript object
+
+                    userData.forEach((user) => { // loop through them and dynamically create li element for each user
+                        const newUser = document.createElement('li');
+                        const newUserText = document.createTextNode(user.name);
+
+                        newUser.appendChild(newUserText); // append elements to user list 
+                        userList.appendChild(newUser);
+
+                    });
+                } else {
+                    console.log('There was a problem with the request');
+                }
+            }
+        };
+
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/users');
+        xhr.send();
+    </script>
+</body>
+</html>
